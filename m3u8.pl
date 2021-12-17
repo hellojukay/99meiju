@@ -12,7 +12,7 @@ GetOptions(
     "o|output=s" => \( my $output ),
     "h|help"     => \( my $help ),
     "v|verbose"  => \( my $verbose ),
-    "u|url=s"      => \( my $web )
+    "u|url=s"    => \( my $web )
 );
 
 sub usage($) {
@@ -43,9 +43,9 @@ sub get ($) {
     my $agent =
       "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0";
     my $url  = shift;
-    my $cmd = "curl -A \"$agent\" -s -k $url";
+    my $cmd  = "curl -A \"$agent\" -s -k $url";
     my $html = `$cmd`;
-    $html = decode("utf8",$html);
+    $html = decode( "utf8", $html );
     if ($verbose) {
         printf "%s\n", $cmd;
     }
@@ -86,7 +86,7 @@ sub get_m3u8 ($) {
     return $url;
 }
 
-if($verbose) {
+if ($verbose) {
     printf "now scrap from $web\n";
 }
 my $html  = get($web);
